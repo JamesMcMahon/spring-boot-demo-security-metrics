@@ -1,0 +1,10 @@
+global:
+  scrape_interval: 15s # default 60s
+  evaluation_interval: 15s # default 60s
+
+scrape_configs:
+  # security metrics demo app configuration
+  - job_name: 'spring'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['host.docker.internal:8080']
