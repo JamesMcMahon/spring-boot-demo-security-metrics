@@ -16,4 +16,4 @@ curl -i -u harold:hardcoded-insecure-password2 http://localhost:8080/secure/1
 curl -i -u chester:hardcoded-insecure-password http://localhost:8080/secure/2
 
 echo "Testing insecure endpoint without authentication..."
-seq 1 7 | xargs -n1 -P2 -I{} curl -i http://localhost:8080/insecure
+seq 1 14 | xargs -n1 -P2 -I{} curl -i http://localhost:8080/insecure
