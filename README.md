@@ -24,8 +24,7 @@ the [Spring Boot Observability Demo](https://github.com/JamesMcMahon/spring-boot
 ### Starting the Application
 
 1. Clone this repository
-2. Build the application: `./mvnw clean package`
-3. Start the application: `./mvnw spring-boot:run`
+2. Start the application: `./mvnw spring-boot:run`
 
 > **Note:** Booting the application starts up the full visualization stack automatically from the Docker compose file.
 
