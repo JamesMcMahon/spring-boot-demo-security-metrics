@@ -6,9 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class SecurityMetricsDemoApplicationTests {
 
-	/**
-	 * Verifies that the Spring Application Context loads successfully.
-	 */
+	/// Verifies that the Spring Application Context loads successfully.
 	@Test
 	void contextLoads() {
 	}

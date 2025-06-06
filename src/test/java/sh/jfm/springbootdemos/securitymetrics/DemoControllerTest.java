@@ -16,9 +16,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-/***
- * Simple tests for ensuring Spring Security is configured correctly and doesn't regress.
- */
+/// Simple tests for ensuring Spring Security is configured correctly and doesn't regress.
 @SpringBootTest
 @AutoConfigureMockMvc
 class DemoControllerTest {

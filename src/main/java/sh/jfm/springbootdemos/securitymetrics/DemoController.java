@@ -6,13 +6,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-/**
- * Simple controller providing secured endpoints for basic authentication metrics.
- * Used to demonstrate and test Spring Security authentication flow and logging.
- * <p>
- * Endpoints include simulated random delays to provide more realistic metrics
- * for demonstration purposes.
- */
+/// Simple controller providing secured endpoints for basic authentication metrics.
+/// Used to demonstrate and test Spring Security authentication flow and logging.
+///
+/// Endpoints include simulated random delays to provide more realistic metrics
+/// for demonstration purposes.
 @RestController
 public class DemoController {
     @Value("${endpoint.delay.min}")
