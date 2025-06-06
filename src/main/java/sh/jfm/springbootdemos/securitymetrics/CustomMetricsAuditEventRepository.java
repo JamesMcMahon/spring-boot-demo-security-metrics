@@ -8,30 +8,39 @@ import org.springframework.boot.actuate.audit.AuditEvent;
 import org.springframework.boot.actuate.audit.InMemoryAuditEventRepository;
 import org.springframework.stereotype.Component;
 
-/// Custom implementation of Spring Boot's AuditEventRepository that combines:
-/// - In-memory storage of audit events (inherited from InMemoryAuditEventRepository)
-/// - Metrics collection for authentication/authorization events
-/// 
-/// This repository automatically captures Spring Security events like successful/failed
-/// authentication attempts and authorization failures, making them available for:
-/// - Monitoring through Micrometer metrics
-/// - Runtime inspection through Spring Boot Actuator endpoints
+/// Custom implementation of Spring Boot's AuditEventRepository that provides both
+/// audit event storage and security metrics collection capabilities.
 ///
-/// @see <a href="https://docs.spring.io/spring-boot/reference/actuator/auditing.html">Actuator Auditing</a>
+/// Key features:
+/// - Stores authentication and authorization events in memory
+/// - Generates Micrometer metrics for security events
+/// - Tracks success/failure counts with user and URL context
+///
+/// Events tracked:
+/// - Authentication successes
+/// - Authentication failures
+/// - Authorization failures
+///
+/// All metrics are tagged with relevant context (user, URL, event type).
+///
+/// @see <a href="https://docs.spring.io/spring-boot/reference/actuator/auditing.html">Spring Boot Actuator Auditing</a>
 @Component
-public class MetricsAuditEventRepository extends InMemoryAuditEventRepository {
-    private static final Logger logger = LoggerFactory.getLogger(MetricsAuditEventRepository.class);
+public class CustomMetricsAuditEventRepository extends InMemoryAuditEventRepository {
+    private static final Logger logger = LoggerFactory.getLogger(CustomMetricsAuditEventRepository.class);
     private final MeterRegistry meterRegistry;
-
-    public MetricsAuditEventRepository(MeterRegistry meterRegistry) {
-        this.meterRegistry = meterRegistry;
-    }
 
     private static String getUrl(AuditEvent event) {
         if (event.getData().get("details") instanceof WebAuthenticationDetailsWithUrl authDetails) {
             return authDetails.getUrl();
         }
         return "N/A";
+    }
+
+    /// Creates a new audit repository with metrics capabilities.
+    ///
+    /// @param meterRegistry The Micrometer registry used to record security metrics
+    public CustomMetricsAuditEventRepository(MeterRegistry meterRegistry) {
+        this.meterRegistry = meterRegistry;
     }
 
     /// Processes incoming security audit events by:

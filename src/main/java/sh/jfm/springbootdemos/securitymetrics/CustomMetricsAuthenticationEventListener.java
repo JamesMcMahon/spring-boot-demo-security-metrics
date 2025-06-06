@@ -11,25 +11,30 @@ import org.springframework.stereotype.Component;
 /// This component tracks both successful and failed authentication attempts, providing:
 /// - Custom metrics for monitoring authentication success/failure rates
 /// - URL tracking for authentication attempts
+/// - User-specific authentication metrics
 ///
-/// Integrates with Spring Boot's metrics system to enable monitoring through
-/// platforms like Prometheus or other monitoring systems that support Micrometer.
+/// All metrics are tagged with relevant context information (user, URL) to enable
+/// detailed analysis and monitoring through platforms like Prometheus or other
+/// monitoring systems that support Micrometer.
 ///
 /// @see <a href="https://docs.spring.io/spring-security/reference/servlet/authentication/events.html">Spring Security Authentication Events</a>
 @Component
-public class MetricsSecurityEventListener {
+public class CustomMetricsAuthenticationEventListener {
     private final MeterRegistry meterRegistry;
 
     /// Creates a new metrics listener with the provided meter registry.
     ///
     /// @param meterRegistry The Micrometer registry used to record authentication metrics
-    public MetricsSecurityEventListener(MeterRegistry meterRegistry) {
+    public CustomMetricsAuthenticationEventListener(MeterRegistry meterRegistry) {
         this.meterRegistry = meterRegistry;
     }
 
-    /// Handles successful authentication events by logging the event and incrementing
-    /// a success counter in the metrics registry. The counter includes tags for
-    /// the username and the URL where authentication was attempted.
+    /// Handles successful authentication events by incrementing a success counter in the metrics registry.
+    /// Creates a metric named 'customevent.authentications.success' with the following tags:
+    /// - user: The authenticated username
+    /// - url: The URL where authentication was attempted
+    ///
+    /// @param success The authentication success event containing user details
     @EventListener
     public void onSuccess(AuthenticationSuccessEvent success) {
         Counter.builder("customevent.authentications.success")
@@ -40,9 +45,13 @@ public class MetricsSecurityEventListener {
                 .increment();
     }
 
-    /// Handles failed authentication events by logging the failure details and incrementing
-    /// a failure counter in the metrics registry. The counter includes tags for
-    /// the username, URL, and failure reason.
+    /// Handles failed authentication events by incrementing a failure counter in the metrics registry.
+    /// Creates a metric named 'customevent.authentications.failure' with the following tags:
+    /// - user: The username that failed authentication
+    /// - url: The URL where authentication was attempted
+    /// - message: The detailed failure reason from the security exception
+    ///
+    /// @param failure The authentication failure event containing error details
     @EventListener
     public void onFailure(AbstractAuthenticationFailureEvent failure) {
         Counter.builder("customevent.authentications.failure")

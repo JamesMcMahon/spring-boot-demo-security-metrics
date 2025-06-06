@@ -339,7 +339,7 @@
         "type": "prometheus",
         "uid": "prometheus"
       },
-      "description": "Tracks authentication failures in real-time, showing the increase in failed login attempts over the past minute broken down by user and URL. By monitoring these metrics, security teams can quickly identify potential brute force attacks, misconfigured clients, or users having difficulty accessing the system.\n\nUses the custom metrics defined in MetricsSecurityEventListener.",
+      "description": "Tracks authentication failures in real-time, showing the increase in failed login attempts over the past minute broken down by user and URL. By monitoring these metrics, security teams can quickly identify potential brute force attacks, misconfigured clients, or users having difficulty accessing the system.\n\nUses the custom metrics defined in CustomMetricsAuthenticationEventListener.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -432,7 +432,7 @@
         "type": "prometheus",
         "uid": "prometheus"
       },
-      "description": "Shows the cumulative count of failed authentication attempts for each user and URL combination. This helps identify potential security issues by highlighting users or endpoints with unusually high failure rates that could indicate brute force attempts or misconfigured clients.\n\nUses the custom metrics defined in MetricsSecurityEventListener.",
+      "description": "Shows the cumulative count of failed authentication attempts for each user and URL combination. This helps identify potential security issues by highlighting users or endpoints with unusually high failure rates that could indicate brute force attempts or misconfigured clients.\n\nUses the custom metrics defined in CustomMetricsAuthenticationEventListener.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -509,7 +509,7 @@
         "type": "prometheus",
         "uid": "prometheus"
       },
-      "description": "Shows the rate of authentication failures per minute grouped by URL endpoint. This helps identify which specific endpoints are experiencing authentication problems, making it easier to spot targeted attacks or misconfigured clients attempting to access specific resources.\n\nUses the custom metrics defined in MetricsSecurityEventListener.",
+      "description": "Shows the rate of authentication failures per minute grouped by URL endpoint. This helps identify which specific endpoints are experiencing authentication problems, making it easier to spot targeted attacks or misconfigured clients attempting to access specific resources.\n\nUses the custom metrics defined in CustomMetricsAuthenticationEventListener.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -605,7 +605,7 @@
         "type": "prometheus",
         "uid": "prometheus"
       },
-      "description": "Monitors the rate of authentication failures per minute grouped by username. This visualization helps identify user accounts that may be under attack or experiencing configuration issues by showing which users are generating the most authentication failures.\n\nUses the custom metrics defined in MetricsSecurityEventListener.",
+      "description": "Monitors the rate of authentication failures per minute grouped by username. This visualization helps identify user accounts that may be under attack or experiencing configuration issues by showing which users are generating the most authentication failures.\n\nUses the custom metrics defined in CustomMetricsAuthenticationEventListener.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -698,7 +698,7 @@
         "type": "prometheus",
         "uid": "prometheus"
       },
-      "description": "Tracks the number of anonymous access attempts per minute. This helps identify potential security risks by showing how many unauthenticated requests are being made to protected resources, which could indicate scanning or probing attempts.\n\nUses the custom metrics defined in MetricsAuditEventRepository.",
+      "description": "Tracks the number of anonymous access attempts per minute. This helps identify potential security risks by showing how many unauthenticated requests are being made to protected resources, which could indicate scanning or probing attempts.\n\nUses the custom metrics defined in CustomMetricsAuditEventRepository.",
       "fieldConfig": {
         "defaults": {
           "color": {
