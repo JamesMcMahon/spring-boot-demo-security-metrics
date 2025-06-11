@@ -42,15 +42,21 @@ You can generate sample traffic using the provided scripts:
 
 ### Viewing Metrics
 
-Once everything is running and traffic has been simulated you can access the metrics through:
+Once everything is running and traffic has been simulated, you can access the metrics through:
 
 - Grafana Dashboards: http://localhost:3000/dashboards
 - Prometheus: http://localhost:9090
 - Spring Actuator's Prometheus Endpoint: http://localhost:8080/actuator/prometheus
 
-The primary Grafana dashboard is "Security". The other dashboards contain some standard Spring Boot metrics.
+#### Security Dashboard
 
-The tooltips in the Security dashboard break down each visualization and source where the metrics are coming from.
+The primary Grafana dashboard is "Security". 
+This dashboard contains all the built-in and custom metrics highlighted in this demo. 
+The tooltips in the dashboard break down each visualization and source where the metrics are coming from.
+
+#### Spring Boot Dashboards
+
+The other dashboards contain standard Spring Boot metrics.
 
 ## Techniques Used For Custom Metrics
 
