@@ -54,10 +54,6 @@ The primary Grafana dashboard is "Security".
 This dashboard contains all the built-in and custom metrics highlighted in this demo. 
 The tooltips in the dashboard break down each visualization and source where the metrics are coming from.
 
-#### Spring Boot Dashboards
-
-The other dashboards contain standard Spring Boot metrics.
-
 ## Techniques Used For Custom Metrics
 
 ### Event Listeners
