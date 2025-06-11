@@ -68,7 +68,7 @@ see [Spring Security Authentication Events](https://docs.spring.io/spring-securi
 
 The `CustomMetricsAuditEventRepository` component extends Spring Boot's `InMemoryAuditEventRepository` to store and
 track security audit events. It creates custom metrics for authentication successes, authentication failures, and
-authorization failures, with each event tagged by user and URL.
+authorization failures *(which include anonymous access requests)*, with each event tagged by user and URL.
 
 For detailed information about auditing,
 see [Spring Boot Actuator Auditing](https://docs.spring.io/spring-boot/reference/actuator/auditing.html).

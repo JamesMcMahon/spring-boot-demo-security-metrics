@@ -21,6 +21,9 @@ import org.springframework.stereotype.Component;
 /// - Authentication failures
 /// - Authorization failures
 ///
+/// > Note: Since this demo does not use any traditional authorization, the only usage of Authorization failures is to
+/// track access attempts with no username or password.
+///
 /// All metrics are tagged with relevant context (user, URL, event type).
 ///
 /// @see <a href="https://docs.spring.io/spring-boot/reference/actuator/auditing.html">Spring Boot Actuator Auditing</a>
@@ -57,6 +60,7 @@ public class CustomMetricsAuditEventRepository extends InMemoryAuditEventReposit
 
     private void countEvent(AuditEvent event) {
         switch (event.getType()) {
+            // AUTHORIZATION_FAILURE is used when no credentials are supplied
             case "AUTHENTICATION_FAILURE", "AUTHORIZATION_FAILURE" -> countFailureEvent(event);
             case "AUTHENTICATION_SUCCESS" -> countSuccessEvent(event);
             default -> logger.warn("Unknown audit event type: {}", event.getType());

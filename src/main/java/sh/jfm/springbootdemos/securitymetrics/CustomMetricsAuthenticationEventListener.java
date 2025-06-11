@@ -51,6 +51,9 @@ public class CustomMetricsAuthenticationEventListener {
     /// - url: The URL where authentication was attempted
     /// - message: The detailed failure reason from the security exception
     ///
+    /// > Note: Spring Boot does not consider absence of credentials to be an authentication failure,
+    /// the Audit approach covers those scenarios
+    ///
     /// @param failure The authentication failure event containing error details
     @EventListener
     public void onFailure(AbstractAuthenticationFailureEvent failure) {
